@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>用户信息</title>
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<a th:href="@{/bl?lang=zh}">中文</a>
+	<a th:href="@{/bl?lang=en}">English</a>
+	<form action="toInsert" method="post">
+		<table width="100%" height="300px" border="1" align="center" cellpadding="0"
+			cellspacing="0" style="text-align: center">
+			<tr>
+				<td th:text="#{id}"></td>
+				<td th:text="#{name}"></td>
+				<td th:text="#{age}"></td>
+				<td th:text="#{gender}"></td>
+				<td th:text="#{action}"></td>
+			</tr>
+			<tr th:each="user : ${allUser}">
+				<td th:text="${user.id}"></td>
+					<td th:text="${user.name}"></td>
+					<td th:text="${user.age}"></td>
+					<td th:text="${user.gender}"></td>
+					<td><a th:href="@{'/findId?id='+${user.id}}"><div
+							th:text="#{edit}"></div></a>
+					<a th:href="@{'/delId?id='+${user.id}}"><div
+							th:text="#{delete}"></div></a></td>
+				</tr>
+				<tr>
+    				<td colspan="5"><input type="submit" th:value="#{insert}" /></td>
+ 				 </tr>
+</table>
+</form>
+</body>
+</html>
